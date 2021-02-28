@@ -15,6 +15,7 @@ class Solution
         int counterFor0 = 0;
         int counterFor1 = 0;
         int counterFor2 = 0;
+        int indexer = 0;
         
         for(int i=0; i<n; i++){
             
@@ -31,17 +32,20 @@ class Solution
             }
         }
         
-        int indexer = counterFor0;
+        indexer = counterFor0;
         for(int j=0; j<counterFor0; j++){
             a[j]=0;
         }
-        int diff = indexer-
-        for(int k=indexer; k<indexer+counterFor1; k++){
-            a[k]=1;
+        indexer--;
+        for(int k=0; k<counterFor1; k++){
             indexer++;
+            a[indexer]=1;
+            
         }
-        for(int l=indexer; l<indexer+counterFor2; l++){
-            a[l]=2;
+        indexer--;
+        for(int l=0; l<counterFor2; l++){
+            indexer++;
+            a[indexer]=2;
         }
         
     }   
@@ -49,29 +53,21 @@ class Solution
 
 // { Driver Code Starts.
 int main() {
+    int n;
+    int a[n];
 
-    int t;
-    cin >> t;
-
-    while(t--){
-        int n;
-        cin >>n;
-        int a[n];
-        for(int i=0;i<n;i++){
-            cin >> a[i];
-        }
-
-        Solution ob;
-        ob.sort012(a, n);
-
-        for(int i=0;i<n;i++){
-            cout << a[i]  << " ";
-        }
-
-        cout << endl;
-        
-        
+    cin>>n;
+    for(int j=0; j<n; j++){
+        cin>>a[j];
     }
+    Solution ob;
+    ob.sort012(a, n);
+    for(int i=0;i<n;i++){
+        cout << a[i]  << " ";
+    }
+    cout << endl;
+        
+        
     return 0;
 }
 
