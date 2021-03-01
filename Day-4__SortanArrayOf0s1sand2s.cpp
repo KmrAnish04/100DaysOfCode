@@ -36,16 +36,15 @@ class Solution
         for(int j=0; j<counterFor0; j++){
             a[j]=0;
         }
-        indexer--;
+        
         for(int k=0; k<counterFor1; k++){
-            indexer++;
             a[indexer]=1;
+            indexer++;
             
         }
-        indexer--;
         for(int l=0; l<counterFor2; l++){
-            indexer++;
             a[indexer]=2;
+            indexer++;
         }
         
     }   
@@ -53,10 +52,11 @@ class Solution
 
 // { Driver Code Starts.
 int main() {
+    
     int n;
-    int a[n];
-
     cin>>n;
+
+    int a[n];
     for(int j=0; j<n; j++){
         cin>>a[j];
     }
