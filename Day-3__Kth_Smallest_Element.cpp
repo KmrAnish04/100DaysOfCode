@@ -42,6 +42,7 @@ int kthSmallest(int arr[], int l, int r, int k) {
     // Insertion Sort Technique
     int temp;
     int j;
+    
     //Sorting the array
     for(int i=1; i<r+1; i++){
         temp = arr[i];
@@ -55,29 +56,4 @@ int kthSmallest(int arr[], int l, int r, int k) {
     }
     
     return arr[k-1];
-
-    //Bubble Sort Technique
-    // int temp;
-    // for(int i=0; i<r+1; i++){
-    //     int flag = 0;
-        
-    //     for(int j=0; j<r+1-i; j++){
-            
-    //         if(arr[j]>arr[j+1]){
-    //             temp = arr[j];
-    //             arr[j] = arr[j+1];
-    //             arr[j+1] = temp;
-    //             flag = 1;
-    //         }
-    //     }
-    //     if(flag == 0){
-    //     break;}
-        
-    
-    // }
-    // for(int m=0; m<r+1; m++){
-    //     cout<<arr[m];
-    //     cout<<"a";
-    // }
-    // return arr[k-1];
 }

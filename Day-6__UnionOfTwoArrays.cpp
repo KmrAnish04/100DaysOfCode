@@ -13,6 +13,7 @@ int doUnion(int a[], int n, int b[], int m)
     int count = 0;
     int matchForA = 0;
     int matchforB = 0;
+    int result = 0;
     
     
 
@@ -98,42 +99,56 @@ int doUnion(int a[], int n, int b[], int m)
 
     ///////////For B Ending///////////////
 
-    for (int i = 0; i < sizeA-matchForA; i++)
+    int sizeofA = sizeA-matchForA;
+    int sizeofB = sizeB-matchforB;
+    int unCount = 0;
+    for (int i = 0; i < sizeofA; i++)
     {
-        bool flag;
-        for (int j = 0; j < sizeB-matchforB; j++)
+        // bool flag = true;
+        for (int j = 0; j < sizeofB; j++)
         {
-            if (newA[i] != newB[j])
+            if (newA[i] == newB[j])
             {
-                flag = false;
+                // flag = true;
+                unCount++;
+                break;
             }
             else
             {
-                flag = true;
-                break;
+                count++;
+                // flag = false;
             }
+            // if (flag == false)
+            // {
+            //     count++;
+            // }
         }
-        if (flag == false)
-        {
-            count++;
-        }
+        
+        
     }
 
-    if ((sizeA-matchForA) > (sizeB-matchforB))
+    count = count - unCount;
+
+    cout<<"Result:"<<result<<"\n";
+    cout<<"Size of A:"<<sizeofA<<"\n";
+    cout<<"Size of B:"<<sizeofB<<"\n";
+    cout<<"Count Value:"<<count<<"\n";
+    
+    if ((sizeofA) < (sizeofB))
     {
-        count = (sizeB-matchforB) + count;
+        result = (sizeofB) + count;
     }
-    else if ((sizeB-matchforB) > (sizeA-matchForA))
+    else if ((sizeofB) < (sizeofA))
     {
-        count = (sizeA-matchForA) + count;
+        result = (sizeofA) + count;
     }
     else
     {
-        count = (sizeA-matchForA) + count;
+        result = (sizeofA) + count;
     }
 
-    cout<<count;
-    return count;
+    cout<<result;
+    return result;
 }
 
 int main()
