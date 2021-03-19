@@ -35,3 +35,5 @@ void rotate(int arr[], int n)
     arr[0] = temp;
     
 }
+
+/////
