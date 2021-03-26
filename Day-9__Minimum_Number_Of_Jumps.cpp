@@ -7,6 +7,12 @@ int minJumps(int arr[], int n){
         int indexer1 = arr[0];
         int indexer2 = 0;
         jumps++;
+
+	jump++;
+    if(i>=maxReach)
+       return -1;
+    step = maxReach - i;
+	}
         
         for(int i=indexer1; i<n; i++){
             i--;
