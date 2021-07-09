@@ -6,7 +6,7 @@ int merge(int arr[], int temp[], int left, int mid, int right){
     int inv = 0;
     int i = left;
     int j = mid;
-    int k = right;
+    int k = left;
 
     while ((i <= mid - 1) && (j <= right)){
         if (arr[i] <= arr[j])
@@ -51,20 +51,25 @@ int mergeSort(int arr[], int temp[], int left, int right){
     return inv;
 }
 
-int inversionCount(int arr[], int N)
-{
-    // Your Code Here
-    int temp[N];
-    int ans = mergeSort(arr, temp, 0, N - 1);
-    printf("%d", ans);
-    printf("this is inv count function\n");
-    return ans;
-}
+// int inversionCount(int arr[], int N)
+// {
+//     // Your Code Here
+//     int temp[N];
+//     int ans = mergeSort(arr, temp, 0, N - 1);
+//     printf("%d\n", ans);
+//     printf("this is inv count function\n");
+//     return ans;
+// }
 
 int main()
 {
     /* code */
-    int arr[] = {2, 4, 1, 3, 5};
-    inversionCount(arr, 5);
+    int N = 5;
+    int arr[N] = {2, 4, 1, 3, 5};
+    int temp[N];
+    // inversionCount(arr, N);
+    int ans = mergeSort(arr, temp, 0, N - 1);
+    printf("%d\n", ans);
+
     return 0;
 }
