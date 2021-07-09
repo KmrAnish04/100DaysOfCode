@@ -1,70 +1,70 @@
 #include <iostream>
 using namespace std;
 
-int merge(int arr[], int left, int mid, int right)
-{
+int merge(int arr[], int temp[], int left, int mid, int right){
 
-    int arrB[N];
+    int inv = 0;
     int i = left;
-    int j = mid + 1;
+    int j = mid;
     int k = right;
-    int inv_count = 0;
 
-    while (i <= mid && j <= right)
-    {
+    while ((i <= mid - 1) && (j <= right)){
         if (arr[i] <= arr[j])
         {
-            arrB[k] = arrB[i];
-            i++;
+            temp[k++] = temp[i++];
         }
         else
         {
-            arrB[k] = arrB[j];
-            j++;
-            inv_count = inv_count + mid - i
-        }
-        k++;
-
-        if (i > mid)
-        {
-            while (j <= right)
-            {
-                arrB[k] = arrB[j];
-                j++;
-                k++;
-            }
-        }
-        else
-        {
-            while (i <= mid)
-            {
-                arrB[k] = arrB[i];
-                i++;
-                j++;
-            }
+            temp[k++] = temp[j++];
+            inv = inv + (mid - i); // Main part
         }
     }
 
-    for (int l = left; l < right; l++)
+    while (i <= mid - 1)
     {
-        arr[k] = arrB[l];
+        temp[k++] = arr[j++];
+    }
+    while (j <= right)
+    {
+        temp[k++] = arr[j++];
+    }
+    for (int l = left; l <= right; l++)
+    {
+        arr[l] = temp[l];
     }
 
-    return 0;
+    printf("this is merge function\n");
+    return inv;
 }
 
-int mergeSort(int arr[], left, right){
+int mergeSort(int arr[], int temp[], int left, int right){
 
-    int mid, inv_count = 0;
+    int inv = 0;
     if (left < right)
     {
-        int mid = (left+right)/2;
-        inv_count += mergeSort(arr, left, right);
-        inv_count += mergeSort(arr, mid+1, right);
-
-        inv_count += merge(arr, right, mid+1, right);
+        int mid = (left + right) / 2;
+        inv += mergeSort(arr, temp, left, mid);
+        inv += mergeSort(arr, temp, mid + 1, right);
+        inv += merge(arr, temp, left, mid + 1, right);
     }
+    printf("this is mergesort function\n");
+    return inv;
+}
 
-    return inv_count;
-    
+int inversionCount(int arr[], int N)
+{
+    // Your Code Here
+    int temp[N];
+    int ans = mergeSort(arr, temp, 0, N - 1);
+    printf("%d", ans);
+    printf("this is inv count function\n");
+    return ans;
+}
+
+int main()
+{
+    /* code */
+    int arr[] = {2, 4, 1, 3, 5};
+    inversionCount(arr, 5);
+    return 0;
 }
