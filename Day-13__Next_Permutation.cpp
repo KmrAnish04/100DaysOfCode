@@ -1,49 +1,24 @@
+// Solution by "Take U forward" youtube channel
+// Link: https://www.youtube.com/watch?v=LuLCLgMElus&t=561s
+
 class Solution {
 public:
-    void nextPermutation(vector<int>& nums) {
-        
-        vector<int> slicing(vector<int>& arr,
-                    int X, int Y)
-{
-  
-    // Starting and Ending iterators
-    auto start = arr.begin() + X;
-    auto end = arr.begin() + Y + 1;
-  
-    // To store the sliced vector
-    vector<int> result(Y - X + 1);
-  
-    // Copy vector using copy function()
-    copy(start, end, result.begin());
-  
-    // Return the final sliced vector
-    return result;
-}
-        
-        int sizeOfArray = nums.size()-1;
-        
-        if(nums.size() == 0 || nums.size() == 1){
-            nums = nums;
-        }
-        
-        if(nums.size() == 2){
-            swap(nums[0], nums[1]);
-        }
-        
-        if(nums[sizeOfArray] > nums[sizeOfArray-1]){
-            swap(nums[sizeOfArray], nums[sizeOfArray-1]);
-        }
-        
-        for(int i = sizeOfArray-1; i >= 0; i--){
-            vector<int> tempVector;
-            if(nums[i] < nums[i+1]){
-                swap(nums[i], nums[sizeOfArray]);
-                tempVectot = slicing(nums, i+1, sizeOfArray);
-                sort(tempVector.begin(), tempVector.end());
-            }
-        }
-        
-        for
-        
+    void nextPermutation(vector<int>& nums) {   
+                
+    int sizeOfArray = nums.size()-1;
+    
+    // Edge cases
+    if(nums.size() == 0 || nums.size() == 1){
+        nums = nums;
     }
+        
+    int i = sizeOfArray-1;
+    while(i>=0 && nums[i] >= nums[i+1]) i--;
+    if(i>=0){
+        int j = sizeOfArray;
+        while(nums[j] <= nums[i]) j--;
+        swap(nums[i], nums[j]);
+    }
+    sort(nums.begin()+i+1, nums.end());
+    }   
 };
