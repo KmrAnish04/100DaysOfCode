@@ -68,7 +68,7 @@ int main()
     int arr[N] = {2, 4, 1, 3, 5};
     int temp[N];
     // inversionCount(arr, N);
-    int ans = mergeSort(arr, temp, 0, N - 1);
+    int ans = mergeSort(arr, temp, 0, N );
     printf("%d\n", ans);
 
     return 0;
