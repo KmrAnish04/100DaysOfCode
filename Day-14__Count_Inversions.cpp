@@ -1,14 +1,16 @@
 #include <iostream>
 using namespace std;
 
-int merge(int arr[], int temp[], int left, int mid, int right){
+int merge(int arr[], int temp[], int left, int mid, int right)
+{
 
     int inv = 0;
     int i = left;
     int j = mid;
     int k = left;
 
-    while ((i <= mid - 1) && (j <= right)){
+    while ((i <= mid - 1) && (j <= right))
+    {
         if (arr[i] <= arr[j])
         {
             temp[k++] = temp[i++];
@@ -37,7 +39,8 @@ int merge(int arr[], int temp[], int left, int mid, int right){
     return inv;
 }
 
-int mergeSort(int arr[], int temp[], int left, int right){
+int mergeSort(int arr[], int temp[], int left, int right)
+{
 
     int inv = 0;
     if (left < right)
@@ -68,7 +71,7 @@ int main()
     int arr[N] = {2, 4, 1, 3, 5};
     int temp[N];
     // inversionCount(arr, N);
-    int ans = mergeSort(arr, temp, 0, N );
+    int ans = mergeSort(arr, temp, 0, N);
     printf("%d\n", ans);
 
     return 0;
