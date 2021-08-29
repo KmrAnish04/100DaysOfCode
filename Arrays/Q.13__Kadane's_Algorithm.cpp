@@ -1,29 +1,18 @@
-int minSwap(int *arr, int n, int k) {
-    // Complet the function
-    int good=0;
-    int bad=0;
-    int count=0;
-    int start=0;
-    int end;
-    
-    for(int i=0; i<n; i++){
-        if(arr[i]<=k){
-            good++;
+long long maxSubarraySum(int arr[], int n){
+        
+        // Your code here
+        long long tempSum=arr[0];
+        long long finalSum=arr[0];
+        
+        for(int i=1; i<n; i++){
+            if(tempSum>=0){
+                tempSum+=arr[i];
+            }
+            else{
+                tempSum=arr[i];
+            }
+            finalSum=max(tempSum, finalSum);
         }
+        
+        return finalSum;
     }
-    
-    for(int j=0; j<good; j++){
-        if(arr[j]>k) bad++;
-    }
-    end=good; count=bad;
-    
-    while(end<n){
-        if(arr[start]>k) bad--;
-        if(arr[end]>k) bad++;
-        count=min(bad, count);
-        start++;end++;
-    }
-    
-    return count;
-    
-}
