@@ -1,59 +1,65 @@
-// { Driver Code Starts
-//Initial function template for C++
+#include <iostream>
+#include <algorithm>
 
-#include<bits/stdc++.h>
 using namespace std;
 
-int kthSmallest(int *, int, int, int);
- 
-int main()
+int partitionFunc(int arr[], int low, int high)
 {
-    // ios_base::sync_with_stdio(false);
-    // cin.tie(NULL);
-    
-    int test_case;
-    cin>>test_case;
-    while(test_case--)
+
+    int pivot = arr[high];
+    int i = low - 1;
+
+    for (int j = low; j < high; j++)
     {
-        int number_of_elements;
-        cin>>number_of_elements;
-        int a[number_of_elements];
-        
-        for(int i=0;i<number_of_elements;i++)
-            cin>>a[i];
-            
-        int k;
-        cin>>k;
-        cout<<kthSmallest(a, 0, number_of_elements-1, k)<<endl;
-    }
-    return 0;
-}// } Driver Code Ends
-
-
-//User function template for C++
-
-// arr : given array
-// l : starting index of the array i.e 0
-// r : ending index of the array i.e size-1
-// k : find kth smallest element and return using this function
-int kthSmallest(int arr[], int l, int r, int k) {
-    //code here
-
-    // Insertion Sort Technique
-    int temp;
-    int j;
-    
-    //Sorting the array
-    for(int i=1; i<r+1; i++){
-        temp = arr[i];
-        j = i-1;
-        
-        while(i>=0 && arr[j]>temp){
-            arr[j+1] = arr[j];
-            j--;
+        if (arr[j] <= pivot)
+        {
+            i++;
+            swap(arr[i], arr[j]);
         }
-        arr[j+1] = temp;
+    }
+
+    i++;
+    swap(arr[i], arr[high]);
+
+    return i;
+}
+
+int quickSelect(int arr[], int low, int high, int k){
+    
+    int pI = partitionFunc(arr, low, high);
+
+    if(pI > k){
+        return quickSelect(arr, low, pI-1, k);
+    }
+    else if (pI < k)
+    {
+        return quickSelect(arr, pI+1, high, k);
+    }
+    else
+    {
+        return arr[pI];
     }
     
-    return arr[k-1];
+    
+}
+
+int main() {
+    int sizeArr;
+    int arr[sizeArr];
+    int k;
+    cout<<"Enter size of array:: \n";
+    cin>>sizeArr;
+    for (int i = 0; i < sizeArr; i++)
+    {
+        cout<<"Enter "<<i<<"th element of array\n";
+        cin>>arr[i];
+    }
+
+    cout<<"Enter the k value:: \n";
+    cin>>k;
+
+
+    int ans=quickSelect(arr , 0, sizeArr-1, k);
+    cout<<k<<"(kth) smallest element is:: "<<ans;
+    
 }
