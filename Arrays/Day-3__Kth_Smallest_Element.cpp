@@ -45,10 +45,11 @@ int quickSelect(int arr[], int low, int high, int k){
 
 int main() {
     int sizeArr;
-    int arr[sizeArr];
-    int k;
     cout<<"Enter size of array:: \n";
     cin>>sizeArr;
+
+    int arr[sizeArr];
+    int k;
     for (int i = 0; i < sizeArr; i++)
     {
         cout<<"Enter "<<i<<"th element of array\n";
@@ -58,8 +59,20 @@ int main() {
     cout<<"Enter the k value:: \n";
     cin>>k;
 
-
-    int ans=quickSelect(arr , 0, sizeArr-1, k);
+    for (int j = 0; j < sizeArr; j++)
+    {
+        cout<<arr[j]<<" ";
+    }
+    
+    cout<<"\n";
+    int ans=quickSelect(arr , 0, sizeArr-1, k-1);
     cout<<k<<"(kth) smallest element is:: "<<ans;
+
+    cout<<"\n";
+    for (int j = 0; j < sizeArr; j++)
+    {
+        cout<<arr[j]<<" ";
+    }
+    
     
 }
