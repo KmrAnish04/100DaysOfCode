@@ -1,45 +1,40 @@
-#include<iostream>
-using namespace std;
+int minJumps(int arr[], int n)
+{
+    // Your code here
+    int maxR = arr[0];
+    int steps = arr[0];
+    int jmp = 1;
 
-int minJumps(int arr[], int n){
-        // Your code here
-        if (n <= 1)
-        return 0;
-        
-        if (arr[0] == 0)
+    if (maxR == 0)
         return -1;
-
-
-        int jumps = 0;
-        int indexer1 = arr[0];
-        int indexer2 = 0;
-        jumps++;
-        
-        for(int i=indexer1; i<n;){
-            indexer2 = arr[i];
-            
-            if(indexer2 >= n-1-indexer1){
-                jumps++;
-                cout<<"in if"<<indexer1<<indexer2<<"\n";
-                break;
+    else if (n == 1)
+        return 0;
+    else if (maxR >= n - 1)
+        return jmp;
+    else
+    {
+        for (int i = 1; i < n; i++)
+        {
+            if (i == n - 1)
+            {
+                return jmp;
             }
-            else{
-                indexer1 = indexer1 + indexer2;
-                i = indexer1;
-                cout<<"in else"<<indexer1<<indexer2<<"\n";
-                jumps++;
+
+            maxR = max(maxR, i + arr[i]);
+            if (maxR >= n - 1)
+            {
+                jmp++;
+                return jmp;
+            }
+
+            steps--;
+            if (steps == 0)
+            {
+                jmp++;
+                if (maxR <= i)
+                    return -1;
+                steps = maxR - i;
             }
         }
-        
-        cout<<jumps;
-        return jumps;
     }
-
-int main(){
-    // int n = 11;
-    // int arr[11] = {1,3,5,8,9,2,6,7,6,8,9};
-    int n =6;
-    int arr[6] = {1,4,3,2,6,7};
-
-    minJumps(arr, n);
 }
