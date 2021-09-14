@@ -7,6 +7,8 @@ vector<int> climbingLeaderboard(vector<int> ranked, vector<int> player)
        elements.
        We can take any container instead of map, but the only thing to take care is while storing elements in that container just make sure that it should be stored in 
        sorted order(accessending order) and no repeataion should be included of any element. 
+       For example: ranked = [100, 100, 50, 40, 40, 20, 10]
+       so new container would be, map = [10, 20, 40, 50, 100]
     */
    
     for (int i = 0; i < ranked.size(); i++) 
