@@ -28,3 +28,19 @@ vector<int> circularArrayRotation(vector<int> a, int k, vector<int> queries) {
     return ans;
     
 }
+
+vector<int> circularArrayRotation(vector<int> a, int k, vector<int> queries) {
+    vector<int> ans;
+    int aLen = a.size();
+    int rot = k%aLen;
+    
+    reverse(a.begin()+(aLen-k), a.end());
+    reverse(a.begin(),a.end()-rot);
+    reverse(a.begin(),a.end());
+    
+
+    for(int i=0; i<queries.size(); i++) ans.push_back(a[queries[i]]);
+    
+    return ans;
+    
+}

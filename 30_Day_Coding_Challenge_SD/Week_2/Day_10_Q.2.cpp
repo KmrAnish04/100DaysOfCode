@@ -1,29 +1,7 @@
+// Time Complexity: O(N)
+// Space Complexity: O(N)
 int saveThePrisoner(int n, int m, int s) {
-    int pris=s;
-    int candy=m;
+    int last = (m + (s-2))%n+1;
+    return last;
     
-    cout<<"starting"<<endl;
-    for(int i=pris; i<=n; i++){
-        cout<<"i="<<i<<endl;
-        if(candy!=0){
-            cout<<"line 24"<<endl;
-            if(i==n){
-                cout<<"line 26"<<endl;
-                i=0;
-                candy--;
-            }
-            else{
-                candy--;
-                cout<<"line 30"<<endl;
-            }
-        }
-        else{
-            cout<<"line 32,"<<"i="<<i<<endl; 
-            return i-1;
-            // break;
-        }
-    }
-    
-    return -1;
-
 }
