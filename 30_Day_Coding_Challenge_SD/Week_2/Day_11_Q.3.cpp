@@ -7,7 +7,7 @@
 long repeatedString(string s, long n) {
     int len=s.size();
     long ans=0;
-    vector<int> aPos; // aPos represents the positions of 'a's in array.
+    vector<int> aPos; // aPos represents the positions of a's in array.
     
     for(int i=0; i<len; i++){
         if(s[i]=='a') aPos.push_back(i+1);
