@@ -2,7 +2,7 @@
     Solution by Anish.
 */
 
-int jumpingOnClouds(vector<int> c, int k) {
+int jumpingOnClouds2(vector<int> c, int k) {
     int size=c.size();
     int Eng=100;
     int curPos=0;

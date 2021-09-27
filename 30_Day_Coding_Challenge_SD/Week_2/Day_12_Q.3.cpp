@@ -1,32 +1,25 @@
-int squares(int a, int b) {
-    float sqtAf=sqrt(a);
-    int sqtAi=sqrt(a);
-    float diff= sqtAf-sqtAi;
-    int fstNum;
-    int cnt=0;
+string appendAndDelete(string s, string t, int k) {
+    int slen=s.size();
+    int tlen=t.size();
+    int i=0;
     
-    if(diff==0) cnt++;
+    while(s[i]==t[i] && i<slen && i<tlen) i++;
     
-    while(diff!=0 && a<=b){
-        a++;
-        sqtAf=sqrt(a);
-        sqtAi=sqrt(a);
-        diff=sqtAf-sqtAi;
-        if(diff==0) cnt++;
+    int del=slen-i;
+    int app=tlen-i;
+    int total=del+app;
+    
+    if(total>k) return "No";
+    else if(total==k) return "Yes";
+    else if(total<k){
+        int minOp=total;
+        int extraOp=k-total;
+        int ovcm=(slen-del)+(tlen-app);
+        
+        if(extraOp<slen && extraOp%2==0) return "Yes";
+        else if(extraOp>=ovcm) return "Yes";
     }
     
-    if(a>b) return 0;
-    else if(a==b) return 1;
-    
-    fstNum=a;
-    if(fstNum<b){
-        int sqt = sqrt(fstNum);
-        sqt++;
-        while((sqt*sqt)<=b){
-            cnt++;
-            sqt++;
-        }
-    }
-    
-    return cnt;
+    return "No";
+
 }
