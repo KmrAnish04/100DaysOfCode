@@ -18,31 +18,19 @@ string encryption(string s) {
     int i=1;
     
     while(row*col<actualLen){
-        if(i%2!=0) col++;
-        else row++;
+        if(i%2!=0 && col<cel) col++;
+        else if(i%2==0 && row<col) row++;
         i++;
     }
     
-    // cout<<sLen<<endl;
-    // cout<<actualLen<<endl;
-    // cout<<sqrtVal<<endl;
-    // cout<<flr<<endl;
-    // cout<<cel<<endl;
-    // cout<<row<<endl;
-    // cout<<col<<endl;
-    // cout<<"res= "<<res<<endl;
-     
-    // int col=0;
     for(int i=0; i<col; i++){
         int tmprow=i;
-        res+=actualStr[i];
         while(tmprow<actualLen){
-            res+=actualStr[tmprow+col];
+            res+=actualStr[tmprow];
             tmprow+=col;
         }
-        res+="";
+        if(i!=col-1) res+=" ";
     }
-    // cout<<actualStr;
+    
     return res;
-
 }
