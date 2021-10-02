@@ -34,3 +34,54 @@ string encryption(string s) {
     
     return res;
 }
+
+
+
+
+
+
+// Improving space complexity.....continue
+string encryption(string s) {
+    
+    s.erase(remove(s.begin(), s.end(), ' '), s.end());
+    string res="";
+    
+    int sLen=s.length();
+    float sqrtVal=sqrt(sLen);
+    int flr=floor(sqrtVal);
+    int cel=ceil(sqrtVal);
+    
+    int row=flr;
+    int col=cel;
+    int i=1;
+    
+    while(row*col<sLen){
+        if(i%2!=0) col++;
+        else row++;
+        i++;
+    }
+    
+    // cout<<sLen<<endl;
+    // cout<<actualLen<<endl;
+    // cout<<sqrtVal<<endl;
+    // cout<<flr<<endl;
+    // cout<<cel<<endl;
+    // cout<<row<<endl;
+    // cout<<col<<endl;
+    // cout<<"res= "<<res<<endl;
+     
+    // int col=0;
+    for(int i=0; i<col; i++){
+        int tmprow=i;
+        res+=s[i];
+        while(tmprow<sLen){
+            res+=s[tmprow+col];
+            tmprow+=col;
+        }
+        if(i==col-1) break;
+        res+="";
+    }
+    cout<<res;
+    return res;
+
+}
