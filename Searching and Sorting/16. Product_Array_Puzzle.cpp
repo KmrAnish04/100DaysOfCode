@@ -6,8 +6,10 @@ class Solution{
        
         //code here
         vector<long long int> ans;
-        int tmpProd=1;
-        int rightProd=nums[n-1];
+        long long int tmpProd=1;
+        long long int rightProd=nums[n-1];
+        
+        if(n==1) return {1};
         
         for(int i=0; i<n; i++){
             tmpProd *= nums[i];
@@ -30,4 +32,3 @@ class Solution{
         
     }
 };
-
