@@ -60,6 +60,5 @@ class Solution{
 
 int main(){
 
-	cout<<"faodf";
 	return 0;
 }
