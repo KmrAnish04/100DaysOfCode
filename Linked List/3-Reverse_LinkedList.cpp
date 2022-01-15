@@ -18,6 +18,8 @@ class Solution
             size++;
             tmp = tmp->next;
         }
+
+        if(size<=1) return head;
         
         for(int i=0; i<size; i++){
             next = curr->next;
