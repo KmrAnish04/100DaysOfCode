@@ -1,3 +1,12 @@
+/*
+    Question Link: https://practice.geeksforgeeks.org/problems/reverse-a-linked-list-in-groups-of-given-size/1
+    The below is iterative approch, there is a recursive approch, try that also.
+    // Complexity Analysis:
+        Time: O(n)
+        Space: O(1)
+*/
+
+
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
@@ -15,17 +24,6 @@ struct node
     
 };
 
-/* Function to print linked list */
-void printList(struct node *node)
-{
-    while (node != NULL)
-    {
-        printf("%d ", node->data);
-        node = node->next;
-    }
-    printf("\n");
-}
-
 
 class Solution
 {
@@ -33,7 +31,6 @@ class Solution
     struct node *reverse (struct node *head, int k)
     { 
         // Complete this method
-
         // Finding the size of LikedList
         struct node *tmp = head;
         int size = 0;
@@ -43,20 +40,20 @@ class Solution
         }
         if(size<=1) return head;
 
-        // Reversing operation
-        int groups=ceil(size/k);
+        // Reversing operation 
+        int groups=ceil(float(size)/float(k));
         struct node *curr = head;
-        struct node *ansNode=NULL;
         struct node *pre = NULL;
         struct node *next = NULL;
         struct node *newHead = NULL;
-
+        struct node *preSubHead = NULL;
+        
         for (int i = 0; i < groups; i++)
         {   
+            // if(curr == NULL) break;
+            struct node *subHead=curr;
             pre = NULL;
             next = NULL;
-            struct node *subHead = curr;
-            cout<<"subhead: "<<subHead->data<<endl;
             int j=1;
             while(curr != NULL && j<=k)
             {
@@ -64,20 +61,17 @@ class Solution
                 next = curr->next;
                 curr->next = pre;
                 pre = curr;
-                ansNode = curr;
                 curr = next;
                 j++;
             }
-            cout<<"pre: "<<pre->data<<endl;
-            subHead->next = pre;
-            // cout<<"subhead: "<<subHead->data;
+            
             if(i == 0){
                 newHead = pre;
-                cout<<"newHead: "<<newHead<<endl;
-                cout<<"IF Condition"<<endl;
             }
-            cout<<"newHead1: "<<newHead<<endl;
-            cout<<"i: "<<i<<endl;
+            else{
+                preSubHead->next = pre;
+            }
+            preSubHead=subHead;
         }
 
         return newHead;
@@ -89,39 +83,6 @@ class Solution
 
 int main(void)
 {
-    int t;
-    cin>>t;
-     
-    while(t--)
-    {
-        struct node* head = NULL;
-        struct node* temp = NULL;
-        int n;
-        cin >> n;
-         
-        for(int i=0 ; i<n ; i++)
-        {
-            int value;
-            cin >> value;
-            if(i == 0)
-            {
-                head = new node(value);
-                temp = head;
-            }
-            else
-            {
-                temp->next = new node(value);
-                temp = temp->next;
-            }
-        }
-        
-        int k;
-        cin>>k;
-        
-        Solution ob;
-        head = ob.reverse(head, k);
-        printList(head);
-    }
-     
+    // Code
     return(0);
 }
