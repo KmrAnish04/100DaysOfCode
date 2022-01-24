@@ -90,3 +90,5 @@ int getNthFromLast(Node *head, int n)
        
        return leftPointer->data;
 }
+
+

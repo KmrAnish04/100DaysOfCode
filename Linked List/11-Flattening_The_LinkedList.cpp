@@ -40,3 +40,64 @@ Node *flatten(Node *root)
    
    
 }
+
+
+
+
+// Working solution
+// Recursive Approch
+Node* sortedMerge(Node* head1, Node* head2)  
+{  
+    // code here
+    if(head1!=NULL && head2==NULL) return head1;
+    else if(head1==NULL && head2!=NULL) return head2;
+    
+    
+    Node *newHead=NULL;
+    Node *tail=NULL;
+    if(head1->data<head2->data){
+        newHead=head1;
+        tail=head1;
+        head1=head1->bottom;
+    }
+    else{
+        newHead=head2;
+        tail=head2;
+        head2=head2->bottom;
+    }
+    while(head1!=NULL && head2!=NULL){
+        if(head1->data<head2->data){
+            tail->bottom=head1;
+            tail=tail->bottom;
+            head1=head1->bottom;
+        }
+        else{
+            tail->bottom=head2;
+            tail=tail->bottom;
+            head2=head2->bottom;
+        }
+    }
+    
+    if(head1==NULL){
+        tail->bottom=head2;
+    }
+    else if(head2==NULL){
+        tail->bottom=head1;
+    }
+    
+    return newHead;
+}  
+
+
+Node *flatten(Node *root)
+{
+   // Your code here
+   if(root==NULL || root->next==NULL) return root;
+   
+   root->next=flatten(root->next);
+   
+   return sortedMerge(root, root->next);
+   
+   
+}
+
