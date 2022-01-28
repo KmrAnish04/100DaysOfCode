@@ -1,3 +1,9 @@
+
+
+
+
+
+// This solution that I thought but not working now, it is near to be a right solution. I will correct it later
 class Solution
 {
     public:
@@ -10,24 +16,54 @@ class Solution
         struct Node *second=head->next;
         struct Node *nxt=head->next->next;
         
-        cout<<"pre="<<pre<<endl;
-        cout<<"first="<<first<<endl;
-        cout<<"second="<<second<<endl;
-        cout<<"nxt="<<nxt<<endl;
+        // cout<<"pre="<<pre->data<<endl;
+        cout<<"first="<<first->data<<endl;
+        cout<<"second="<<second->data<<endl;
+        cout<<"nxt="<<nxt->data<<endl;
         int i=1;
-        while(nxt!=NULL && nxt->next!=NULL || i<11){
-            if(pre==NULL) head=second;
-            first->next=nxt;
-            second->next=first;
-            pre->next=second;
+        while(nxt!=NULL){
+            if(pre==NULL){
+                
+                cout<<"i="<<i<<endl;
+                cout<<"In if block"<<endl;
+                cout<<"first="<<first->data<<endl;
+                cout<<"second="<<second->data<<endl;
+                cout<<"nxt="<<nxt->data<<endl;
+                second->next=first;
+                first->next=nxt;
+                newHead=second;
+                pre=newHead;
+            }
+            else{
+                cout<<"i="<<i<<endl;
+                cout<<"In else block"<<endl;
+                cout<<"pre="<<pre->data<<endl;
+                cout<<"first="<<first->data<<endl;
+                cout<<"second="<<second->data<<endl;
+                cout<<"nxt="<<nxt->data<<endl;
+                
+                
+                second->next=first;
+                first->next=nxt;
+                pre->next=second;
+            }
+            // first->next=nxt;
+            // second->next=first;
+            // pre->next=second;
             
             pre=first;
-            first=first->next;
+            first=pre->next;
             second=first->next;
-            nxt=nxt->next;
+            nxt=second->next;
             i++;
+            
+            // cout<<"pre="<<pre->data<<endl;
+            // cout<<"first="<<first->data<<endl;
+            // cout<<"second="<<second->data<<endl;
+            // cout<<"nxt="<<nxt->data<<endl;
+            // i++;
         }
         
-        return head;
+        return newHead;
     }
 };
