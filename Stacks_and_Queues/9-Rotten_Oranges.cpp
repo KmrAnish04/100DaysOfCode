@@ -1,3 +1,13 @@
+/*
+    Problem: Rotten Oranges
+    Problem Link: https://practice.geeksforgeeks.org/problems/rotten-oranges2536/1
+
+    Complexity Analysis:
+        Time: O(N*M)
+        Space: O(N) 
+*/
+
+
 class Solution {
 public:
     int orangesRotting(vector<vector<int>>& grid) {
