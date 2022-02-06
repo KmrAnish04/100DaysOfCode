@@ -1,3 +1,4 @@
+// design the class in the most optimal way
 struct node{
     int key;
     int value;
@@ -42,13 +43,17 @@ class LRUCache
         
         if(back!=front){
             // pop this node from its origional position and push into the back of LL
-            // poping from the front
             if(back!=reqNode){
-                
+                // poping from the front
                 reqNode->pre->next=reqNode->next;
                 reqNode->next->pre=reqNode->pre;
                 
-                // pushing into the front
+                // if the node is front node, then we also have to change front also
+                if(reqNode==front){
+                    front = head->next;
+                }
+                
+                // pushing into the back
                 back->next=reqNode;
                 reqNode->next=NULL;
                 reqNode->pre=back;
@@ -67,16 +72,19 @@ class LRUCache
         // your code here   
         if(keyMap.find(key)!=keyMap.end()){
             node *nodeRepl = keyMap[key];
-            nodeRepl->pre->next = nodeRepl->next;
-            nodeRepl->next->pre=nodeRepl->pre;
-            
-            back->next=nodeRepl;
-            nodeRepl->next=NULL;
-            nodeRepl->pre=back;
-            
             nodeRepl->value=value;
-            tmp=nodeRepl;
-            back=nodeRepl;
+            
+            if(back!=nodeRepl){
+                nodeRepl->pre->next = nodeRepl->next;
+                nodeRepl->next->pre=nodeRepl->pre;
+                
+                back->next=nodeRepl;
+                nodeRepl->next=NULL;
+                nodeRepl->pre=back;
+                
+                tmp=nodeRepl;
+                back=nodeRepl;
+            }
         }
         else{
             
@@ -113,11 +121,15 @@ class LRUCache
                 
                 // Pushing from back
                 back->next=newNode;
+                newNode->next=NULL;
                 newNode->pre=back;
-                
+                back=newNode;
+                tmp=newNode;
+                keyMap[key]=newNode;
                 
                 
             }
         }
     }
 };
+
