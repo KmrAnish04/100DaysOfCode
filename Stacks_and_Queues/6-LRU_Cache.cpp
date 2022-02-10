@@ -78,6 +78,12 @@ class LRUCache
                 nodeRepl->pre->next = nodeRepl->next;
                 nodeRepl->next->pre=nodeRepl->pre;
                 
+                // if the node is front node, then we also have to change front also
+                if(nodeRepl==front){
+                    front = head->next;
+                }
+                
+                
                 back->next=nodeRepl;
                 nodeRepl->next=NULL;
                 nodeRepl->pre=back;
@@ -94,15 +100,17 @@ class LRUCache
                     tmp->next=newNode;
                     newNode->pre=tmp;
                     front = newNode;
-                    back = newNode;
+                    // back = newNode;
                 }
                 else{
                     tmp->next=newNode;
                     newNode->pre=tmp;
-                    back = newNode;
+                    // back = newNode;
                     
                 }
                 tmp=newNode;
+                back=newNode;
+                back->next=NULL;
                 keyMap[key] = newNode;
                 
                 
@@ -123,6 +131,7 @@ class LRUCache
                 back->next=newNode;
                 newNode->next=NULL;
                 newNode->pre=back;
+                
                 back=newNode;
                 tmp=newNode;
                 keyMap[key]=newNode;
@@ -132,4 +141,3 @@ class LRUCache
         }
     }
 };
-
