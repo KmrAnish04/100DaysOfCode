@@ -3,7 +3,7 @@
     Question Link: 
         GFG: https://practice.geeksforgeeks.org/problems/level-order-traversal-in-spiral-form/1
         LeetCode: https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
-        // The question is same but there is a minior difference in traversal direction, but 
+        // The above both question is same but there is a minior difference in traversal direction, but 
         // concept, logic and question is almost same.
 
     *** Complexity Analysis ***
