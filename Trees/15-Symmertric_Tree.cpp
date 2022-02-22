@@ -1,13 +1,13 @@
 /*
-    Problem: Convert Binary Tree To Doubly LinkedList/Convert Binary Search Tree to Sorted Doubly Linkedlist
+    Problem: Symmetric Tree
     Question Link: 
-        GFG: https://practice.geeksforgeeks.org/problems/binary-tree-to-dll/1
-        Leetcode: 'availble for premium users'
+        GFG: https://practice.geeksforgeeks.org/problems/symmetric-tree/1
+        Leetcode: https://leetcode.com/problems/symmetric-tree/
 
     *** Complexity Analysis ***
-            Time: O(N)
-            Space: O(1)
-
+            Expected Time Complexity: O(N).
+            Expected Auxiliary Space: O(Height of the Tree).
+            
     
     *** Algortihm ***
         Anish's Solution:
