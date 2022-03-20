@@ -18,7 +18,7 @@
     
 */
 
-// Using Stack (Not working now)
+// Using Stack 
 class Solution {
   public:
     // Function to return a list containing the DFS traversal of the graph.
@@ -29,24 +29,21 @@ class Solution {
         stack<int> stk;
         
         stk.push(0);
-        vis[0]=1;
         
         while(!stk.empty()){
             int node=stk.top();
-            // cout<<"curr Top: "<<node<<endl;
             stk.pop();
-            ans.push_back(node);
             
+            if(vis[node])continue;
+            
+            ans.push_back(node);
+            vis[node]=1;
             vector<int> tmp=adj[node];
-            for(int i=0; i<tmp.size(); i++){
-                if(vis[tmp[i]]==0){
-                    stk.push(tmp[i]);
-                    vis[tmp[i]]=1;
-                }
+            for(int i=tmp.size()-1; i>=0; i--){
+                stk.push(tmp[i]);
             }
         }
         
         return ans;
     }
 };
-
