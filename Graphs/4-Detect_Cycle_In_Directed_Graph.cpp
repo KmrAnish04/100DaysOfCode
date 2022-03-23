@@ -11,6 +11,9 @@
     Algorithm:
         Method-1
         Using DFS (Recusive Approch)
+        Solution Video: https://www.youtube.com/watch?v=uzVUw90ZFIg&t=592s
+
+        
 
         Method-2
         Using Kahn's Algorithm (Topological Sort Concept)
