@@ -20,7 +20,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void wordsK(string str, vector<char> &ans, map<char,int> &map, int idx, int ssf, int k){
+void wordsK(string str, vector<char> &ans, map<char,int> &maps, int idx, int ssf, int k){
     
     if(idx==str.length()){
         if(ssf==k){
@@ -34,35 +34,35 @@ void wordsK(string str, vector<char> &ans, map<char,int> &map, int idx, int ssf,
     
     
     char ch=str[idx];
-    int lo=map[ch];
-    for(int i=lo+1; i<str.length(); i++){
+    int lo=maps[ch];
+    for(int i=lo+1; i<ans.size(); i++){
         if(ans[i]=='-'){
             ans[i]=ch;
-            map[ch]=i;
-            wordsK(str, ans, map, idx+1, ssf+1, k);
+            maps[ch]=i;
+            wordsK(str, ans, maps, idx+1, ssf+1, k);
             ans[i]='-';
-            map[ch]=lo;
+            maps[ch]=lo;
         }
     }
     
     if(lo==-1){
-        wordsK(str, ans, map, idx+1, ssf, k);
+        wordsK(str, ans, maps, idx+1, ssf, k);
     }
 }
- 
+  
 int main(){
-    string str; 
+    string str;   
     cin>>str;
     int k; 
     cin>>k;
     
     vector<char> ans(k, '-');
-    map<char,int> map;
+    map<char,int> maps;
     for(int i=0; i<str.length(); i++){
-        map[str[i]]=-1;
+        maps[str[i]]=-1;
     }
     
-    wordsK(str, ans, map, 0, 0, k);
+    wordsK(str, ans, maps, 0, 0, k);
     return 0;
 }
 
