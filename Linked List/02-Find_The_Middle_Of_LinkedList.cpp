@@ -1,28 +1,30 @@
-#include<iostream>
-#include<bits/stdc++.h>
-using namespace std;
+// *************************** LinkedList ***************************
+
+/*
+    Problem Description: 
+    Question Link: 
+        GFG: https://practice.geeksforgeeks.org/problems/finding-middle-element-in-a-linked-list/1
+        Leetcode: https://leetcode.com/problems/middle-of-the-linked-list/
+        pepcoding: 
+        nados: 
+
+    Complexity Analysis:
+            Time Complexity: O(N)
+            Space Complexity: O(1)
 
 
-struct Node
-{
-    int data;
-    struct Node* next;
-    
-    Node(int x){
-        data = x;
-        next = NULL;
-    }
-};
-void printList(Node* node) 
-{ 
-    while (node != NULL) { 
-        cout << node->data <<" "; 
-        node = node->next; 
-    }  
-    cout<<"\n";
-} 
+
+    Algorithm:
+        Two Approaches:
+            1. Find length of Linkedlist and then return the middle node (i.e length/2) by iterating till size/2th node.
+            2. Use slow and fast pointer technique.
+*/
 
 
+
+
+// GFG Solution
+// Brute Force Approach
 class Solution{
     public:
     /* Should return data of middle node. If linked list is empty, then  -1*/
@@ -58,7 +60,18 @@ class Solution{
 
 
 
-int main(){
 
-	return 0;
+// Leetcode Solution
+// Fast and Slow Pointer Approach
+ListNode* middleNode(ListNode* head) {        
+        ListNode* slow = head;
+        ListNode* fast = head;
+        
+        while(fast && fast->next){
+            slow=slow->next;
+            fast=fast->next->next;
+        }
+        
+        return slow;
+        
 }
